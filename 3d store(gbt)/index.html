@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouts 3D</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f0a500;
+        }
+
+        header {
+            text-align: center;
+            padding: 5rem 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .buttons {
+            margin-top: 2rem;
+        }
+
+        .buttons a {
+            background: #f0a500;
+            color: black;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .buttons a:hover {
+            background: #ffc107;
+        }
+
+        .page {
+            padding: 2rem;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        .form-container, .products-container, .basket-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        button {
+            background: #f0a500;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #ffc107;
+        }
+
+        .product {
+            margin-bottom: 1.5rem;
+        }
+
+        .product h3 {
+            margin: 0;
+        }
+
+        .basket-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .basket-container li {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .color-options {
+            margin: 0.5rem 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>Scouts 3D</div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="custom-design.html">Custom Designs</a>
+            <a href="products.html">Products</a>
+            <a href="basket.html">Basket</a>
+        </div>
+    </nav>
+
+    <div id="main">
+        <header>
+            <h1>Welcome to Scouts 3D</h1>
+            <p>Your go-to solution for custom 3D designs and products</p>
+        </header>
+    </div>
+
+    <!-- Custom Design Page -->
+    <div id="custom-design" class="page" style="display: none;">
+        <div class="form-container">
+            <h2>Submit Your Custom Design</h2>
+            <form id="custom-design-form" onsubmit="submitCustomDesign(event)">
+                <label for="design-name">Design Name:</label>
+                <input type="text" id="design-name" name="design-name" placeholder="Enter design name" required>
+                <label for="file-link">STL File or Link:</label>
+                <input type="text" id="file-link" name="file-link" placeholder="Enter a link or upload STL file">
+                <button type="submit">Add to Basket</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Products Page -->
+    <div id="products" class="page" style="display: none;">
+        <div class="products-container">
+            <h2>Our Products</h2>
+            <div class="product">
+                <img src="C:\Users\leent\Downloads\signwoggle.webp" alt="Scout Sign Woggle">
+                <h3>Scout Sign Woggle</h3>
+                <p>Price: 0.75 JD</p>
+                <div class="color-options">
+                    <label><input type="radio" name="color1" value="Black" checked> Black</label>
+                    <label><input type="radio" name="color1" value="White"> White</label>
+                </div>
+                <button onclick="addToBasket('Scout Sign Woggle', 0.75, 'color1')">Add to Basket</button>
+            </div>
+
+            <div class="product">
+                <img src="C:\Users\leent\Downloads\handwoggle.webp" alt="Hand Woggle">
+                <h3>Hand Woggle</h3>
+                <p>Price: 0.75 JD</p>
+                <div class="color-options">
+                    <label><input type="radio" name="color2" value="Black" checked> Black</label>
+                    <label><input type="radio" name="color2" value="White"> White</label>
+                </div>
+                <button onclick="addToBasket('Hand Woggle', 0.75, 'color2')">Add to Basket</button>
+            </div>
+
+            <div class="product">
+                <img src="C:\Users\leent\Downloads\rope.webp" alt="Rope Woggle">
+                <h3>Rope Woggle</h3>
+                <p>Price: 0.75 JD</p>
+                <div class="color-options">
+                    <label><input type="radio" name="color3" value="Black" checked> Black</label>
+                    <label><input type="radio" name="color3" value="White"> White</label>
+                </div>
+                <button onclick="addToBasket('Rope Woggle', 0.75, 'color3')">Add to Basket</button>
+            </div>
+
+            <div class="product">
+                <img src="C:\Users\leent\Downloads\eagle.webp" alt="Eagle Woggle">
+                <h3>Eagle Woggle</h3>
+                <p>Price: 0.75 JD</p>
+                <div class="color-options">
+                    <label><input type="radio" name="color4" value="Black" checked> Black</label>
+                    <label><input type="radio" name="color4" value="White"> White</label>
+                </div>
+                <button onclick="addToBasket('Eagle Woggle', 0.75, 'color4')">Add to Basket</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basket Page -->
+    <div id="basket" class="page" style="display: none;">
+        <div class="basket-container">
+            <h2>Your Basket</h2>
+            <ul id="basket-items"></ul>
+            <p id="total-price">Total: 0 JD</p>
+            <form action="https://formspree.io/f/xovjaebp" method="POST" id="basket-form">
+                <h3>Customer Details</h3>
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <input type="hidden" name="basket-data" id="basket-data">
+                <button type="submit" onclick="submitBasketToFormspree(event)">Checkout</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const mainPage = document.getElementById('main');
+        const customDesignPage = document.getElementById('custom-design');
+        const productsPage = document.getElementById('products');
+        const basketPage = document.getElementById('basket');
+        const basketItems = document.getElementById('basket-items');
+        const totalPriceElement = document.getElementById('total-price');
+        const basketDataInput = document.getElementById('basket-data');
+
+        let basket = [];
+
+        function addToBasket(productName, productPrice, colorName) {
+            const color = document.querySelector(`input[name="${colorName}"]:checked`).value;
+            basket.push({ name: productName, price: productPrice, color: color });
+            updateBasketUI();
+        }
+
+        function submitCustomDesign(event) {
+            event.preventDefault();
+            const designName = document.getElementById('design-name').value;
+            const fileLink = document.getElementById('file-link').value;
+            const price = 5; // Example price for a custom design
+            const customDesignDescription = `${designName} (Custom Design)`;
+            addToBasket(customDesignDescription, price, null);
+        }
+
+        function updateBasketUI() {
+            basketItems.innerHTML = '';
+            let total = 0;
+            basket.forEach((item, index) => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - ${item.price} JD - Color: ${item.color || 'N/A'} <button onclick="removeFromBasket(${index})">Remove</button>`;
+                basketItems.appendChild(li);
+            });
+            totalPriceElement.textContent = `Total: ${total.toFixed(2)} JD`;
+            basketDataInput.value = JSON.stringify(basket);
+        }
+
+        function removeFromBasket(index) {
+            basket.splice(index, 1);
+            updateBasketUI();
+        }
+
+        function submitBasketToFormspree(event) {
+            const form = document.getElementById('basket-form');
+            basketDataInput.value = JSON.stringify(basket);
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const href = link.getAttribute('href');
+
+                mainPage.style.display = 'none';
+                customDesignPage.style.display = 'none';
+                productsPage.style.display = 'none';
+                basketPage.style.display = 'none';
+
+                if (href === 'index.html') mainPage.style.display = 'block';
+                else if (href === 'custom-design.html') customDesignPage.style.display = 'block';
+                else if (href === 'products.html') productsPage.style.display = 'block';
+                else if (href === 'basket.html') basketPage.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
